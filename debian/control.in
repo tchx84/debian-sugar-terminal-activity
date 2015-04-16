@@ -1,0 +1,27 @@
+Source: sugar-terminal-activity
+Section: x11
+Priority: optional
+Maintainer: Debian OLPC <debian-olpc-devel@lists.alioth.debian.org>
+Uploaders: Jonas Smedegaard <dr@jones.dk>
+Build-Depends: @cdbs@
+Standards-Version: 3.9.1
+Vcs-Git: https://github.com/tchx84/debian-sugar-terminal-activity.git
+Vcs-Browser: https://github.com/tchx84/debian-sugar-terminal-activity.git
+DM-Upload-Allowed: yes
+
+Package: sugar-terminal-activity
+Architecture: all
+Depends: ${shlibs:Depends}, ${python:Depends}, ${cdbs:Depends}, ${misc:Depends}
+Recommends: ${cdbs:Recommends}
+Provides: ${python:Provides}, ${cdbs:Provides}
+Conflicts: ${cdbs:Conflicts}
+Replaces: ${cdbs:Replaces}
+Description: Sugar Terminal activity
+ Sugar is a graphical user interface aimed at children.
+ .
+ Originating as intregral part of the OLPC "XO" a.k.a. the $100 laptop,
+ Sugar has since grown into a more widely usable low-resource desktop
+ environment for kids.
+ .
+ This package contains the Terminal activity, providing a VT100-
+ compatible terminal emulator for the Sugar environment.

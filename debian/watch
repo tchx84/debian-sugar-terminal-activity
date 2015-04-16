@@ -1,0 +1,4 @@
+# run the "uscan" command to check for upstream updates and more.
+version=3
+http://download.sugarlabs.org/sources/sucrose/fructose/Terminal/Terminal-(.*)\.tar\.bz2
+
