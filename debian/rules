@@ -1,5 +1,23 @@
 #!/usr/bin/make -f
 
+# -*- mode: makefile; coding: utf-8 -*-
+# Copyright 2008-2012, 2015 Jonas Smedegaard <dr@jones.dk>
+# Copyright 2015 Martin Abente Lahaye <tch@sugarlabs.org>
+# Description: Main Debian packaging script for Terminal
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3, or (at your option)
+# any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 # Suppress unneeded auto-resolved build-dependency on python-dev
 CDBS_BUILD_DEPENDS_class_python-sugar_python = python$(cdbs_python_nondefault_version)
 
@@ -24,13 +42,11 @@ CDBS_BUILD_DEPENDS_class_python-sugar_sugar = python-sugar3, unzip
 DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^data/logo_.*\.png|debian/(changelog|copyright(|_hints|_newhints))$
 
 # Needed (always/often/seldom) at runtime
-python-deps = sugar3 gi dbus cairo telepathy
-gir-deps = glib-2.0 gtk-3.0 gconf-2.0 gdkpixbuf-2.0 pango-1.0 rsvg-2.0
-gir-deps += vte-2.90 sugarext-1.0
+python-deps = sugar3 gi
+gir-deps = glib-2.0 gtk-3.0 pango-1.0 vte-2.90
 CDBS_DEPENDS_$(pkg) = python
 CDBS_DEPENDS_$(pkg) +=, $(patsubst %,$(comma) python-%,$(python-deps))
 CDBS_DEPENDS_$(pkg) +=, $(patsubst %,$(comma) gir1.2-%,$(gir-deps))
-CDBS_RECOMMENDS_$(pkg) = $(call cdbs_sugar_anybranchdeps,sugar-artwork sugar-session)
 
 # Ensure only one variant is installed at a time (Debian Policy 7.6.2)
 # (unneeded since Wheezy: can be dropped after Wheezy+1)
